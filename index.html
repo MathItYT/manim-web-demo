@@ -49,9 +49,10 @@ class ExampleScene(Scene):
         await self.play(Write(eq))
         await self.render_frame()
         self.sq = sq
+        self.eq = eq
     
     async def on_mouse_click(self, event):
-        if not hasattr(self, 'sq'):
+        if not hasattr(self, 'sq') or not hasattr(self, 'eq'):
             return
         if event.button == 0:  # Left click
             # Compute canvas bbox
@@ -63,6 +64,7 @@ class ExampleScene(Scene):
             x = offset_x / bbox_width * config.frame_width - config.frame_width / 2
             y = config.frame_height / 2 - offset_y / bbox_height * config.frame_height
             self.sq.move_to(x * RIGHT + y * UP)
+            self.eq.become(MathTex(f"(x - {x:.2f})^2 + (y - {y:.2f})^2 = 1"))
             await self.render_frame()
 
 
