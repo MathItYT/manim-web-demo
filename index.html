@@ -64,7 +64,7 @@ class ExampleScene(Scene):
             x = offset_x / bbox_width * config.frame_width - config.frame_width / 2
             y = config.frame_height / 2 - offset_y / bbox_height * config.frame_height
             self.sq.move_to(x * RIGHT + y * UP)
-            self.eq.become(MathTex(f"(x - {x:.2f})^2 + (y - {y:.2f})^2 = 1"))
+            self.eq.become(MathTex(f"(x - {x:.2f})^2 + (y - {y:.2f})^2 = 1")).to_edge(UP)
             await self.render_frame()
 
 
