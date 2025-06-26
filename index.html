@@ -47,7 +47,7 @@ class ExampleScene(Scene):
         eq = MathTex(r"x^2 + y^2 = 1")
         eq.to_edge(UP)
         await self.play(Write(eq))
-        await self.render_frame()
+        self.render_frame()
         self.sq = sq
         self.eq = eq
     
@@ -74,7 +74,7 @@ class ExampleScene(Scene):
                 self.eq.become(MathTex(f"(x + {-x:.2f})^2 + (y + {-y:.2f})^2 = 1")).to_edge(UP)
             else:
                 self.eq.become(MathTex(f"x^2 + y^2 = 1")).to_edge(UP)
-            await self.render_frame()
+            self.render_frame()
 
 
 scene = ExampleScene()
